@@ -29,11 +29,24 @@ a:hover {
 }
 
 body {
-  display: flex;
-  justify-content: center;
+  padding: 1.25rem 2.5rem 2.5rem;
+}
+
+#root {
+  overflow: hidden;
   min-width: 320px;
   min-height: 100vh;
-  padding: 20px;
+}
+
+section {
+  max-width: 1000px;
+  padding: 10px 15px;
+  border: 1px solid darkseagreen;
+  text-align: center;
+  margin: 0 auto;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 @media (prefers-color-scheme: light) {

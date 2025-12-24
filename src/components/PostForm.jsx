@@ -11,9 +11,9 @@ export const PostForm = () => {
   };
 
   return (
-    <section className={cl.PostForm}>
+    <section>
       <h1>Create a new post</h1>
-      <form style={{ display: 'flex', flexDirection: 'column', gap: 15, padding: 15 }}>
+      <form className={cl.PostForm}>
         <MyInput
           value={post.title}
           onChange={(e) => setPost({ ...post, title: e.target.value })}
@@ -28,7 +28,9 @@ export const PostForm = () => {
           name="body"
         />
       </form>
-      <MyButton onClick={addNewPost}>Create Post</MyButton>
+      <MyButton onClick={addNewPost} type="submit" form="postForm">
+        Create Post
+      </MyButton>
     </section>
   );
 };

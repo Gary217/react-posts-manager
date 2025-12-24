@@ -1,0 +1,14 @@
+.PostItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border: 1px solid wheat;
+  gap: 10px;
+}
+
+.PostItem__data {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
