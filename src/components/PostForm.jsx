@@ -3,15 +3,18 @@ import cl from './PostForm.module.css';
 import { MyInput } from './UI/input/MyInput';
 import { MyButton } from './UI/button/MyButton';
 
-export const PostForm = () => {
+export const PostForm = ({ setVisible, posts, setPosts }) => {
   const [post, setPost] = useState({ title: '', body: '' });
-  const addNewPost = (e) => {
-    e.preventDefault();
+
+  const addNewPost = () => {
+    setVisible(false);
     setPost({ title: '', body: '' });
+    setPosts([{ ...post, id: Date.now() }, ...posts]);
+    /* setPosts(prevPosts => [{...post, id: Date.now()}, ...prevPosts]); */
   };
 
   return (
-    <section>
+    <section style={{ borderRadius: 30 }}>
       <h1>Create a new post</h1>
       <form className={cl.PostForm}>
         <MyInput
@@ -28,9 +31,7 @@ export const PostForm = () => {
           name="body"
         />
       </form>
-      <MyButton onClick={addNewPost} type="submit" form="postForm">
-        Create Post
-      </MyButton>
+      <MyButton onClick={addNewPost}>Create Post</MyButton>
     </section>
   );
 };

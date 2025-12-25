@@ -2,16 +2,21 @@ import React from 'react';
 import { MyButton } from './UI/button/MyButton';
 import cl from './PostItem.module.css';
 
-export const PostItem = ({ post }) => {
+export const PostItem = ({ post, number, posts, setPosts }) => {
+  const deletePost = () => {
+    const felteredArr = posts.filter((e) => e.id !== post.id);
+    setPosts(felteredArr);
+  };
+
   return (
     <article className={cl.PostItem}>
       <div className={cl.PostItem__data}>
         <h2>
-          {post.id}. {post.title}
+          {number}. {post.title}
         </h2>
         <p>{post.body}</p>
       </div>
-      <MyButton>Delete</MyButton>
+      <MyButton onClick={() => deletePost()}>Delete</MyButton>
     </article>
   );
 };
