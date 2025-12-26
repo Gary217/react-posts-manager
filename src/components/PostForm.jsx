@@ -7,10 +7,14 @@ export const PostForm = ({ setVisible, posts, setPosts }) => {
   const [post, setPost] = useState({ title: '', body: '' });
 
   const addNewPost = () => {
-    setVisible(false);
-    setPost({ title: '', body: '' });
-    setPosts([{ ...post, id: Date.now() }, ...posts]);
-    /* setPosts(prevPosts => [{...post, id: Date.now()}, ...prevPosts]); */
+    if (post.title === '' || post.body === '') {
+      alert('Please fill in all fields!');
+    } else {
+      setVisible(false);
+      setPost({ title: '', body: '' });
+      setPosts([{ ...post, id: Date.now() }, ...posts]);
+      /* setPosts(prevPosts => [{...post, id: Date.now()}, ...prevPosts]); */
+    }
   };
 
   return (

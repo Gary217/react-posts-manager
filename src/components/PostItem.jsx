@@ -4,8 +4,8 @@ import cl from './PostItem.module.css';
 
 export const PostItem = ({ post, number, posts, setPosts }) => {
   const deletePost = () => {
-    const felteredArr = posts.filter((e) => e.id !== post.id);
-    setPosts(felteredArr);
+    const filteredArr = posts.filter((e) => e.id !== post.id);
+    setPosts(filteredArr);
   };
 
   return (
