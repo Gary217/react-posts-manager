@@ -1,4 +1,3 @@
-import React from 'react';
 import cl from './MyBytton.module.css';
 
 export const MyButton = ({ children, ...props }) => {

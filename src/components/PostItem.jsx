@@ -1,11 +1,9 @@
-import React from 'react';
 import { MyButton } from './UI/button/MyButton';
 import cl from './PostItem.module.css';
 
-export const PostItem = ({ post, number, posts, setPosts }) => {
+export const PostItem = ({ post, number, setPosts }) => {
   const deletePost = () => {
-    const filteredArr = posts.filter((e) => e.id !== post.id);
-    setPosts(filteredArr);
+    setPosts((prevPosts) => prevPosts.filter((e) => e.id !== post.id));
   };
 
   return (

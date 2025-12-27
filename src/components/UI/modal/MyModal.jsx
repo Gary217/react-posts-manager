@@ -1,4 +1,3 @@
-import React from 'react';
 import cl from './MyModal.module.css';
 
 export const MyModal = ({ children, visible, setVisible }) => {

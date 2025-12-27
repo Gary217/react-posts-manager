@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import cl from './PostForm.module.css';
 import { MyInput } from './UI/input/MyInput';
 import { MyButton } from './UI/button/MyButton';
@@ -12,8 +12,8 @@ export const PostForm = ({ setVisible, posts, setPosts }) => {
     } else {
       setVisible(false);
       setPost({ title: '', body: '' });
-      setPosts([{ ...post, id: Date.now() }, ...posts]);
-      /* setPosts(prevPosts => [{...post, id: Date.now()}, ...prevPosts]); */
+      /* setPosts([{ ...post, id: Date.now() }, ...posts]); */
+      setPosts((prevPosts) => [{ ...post, id: Date.now() }, ...prevPosts]);
     }
   };
 
@@ -23,14 +23,15 @@ export const PostForm = ({ setVisible, posts, setPosts }) => {
       <form className={cl.PostForm}>
         <MyInput
           value={post.title}
-          onChange={(e) => setPost({ ...post, title: e.target.value })}
+          /* onChange={(e) => setPost({ ...post, title: e.target.value })} */
+          onChange={(e) => setPost((prev) => ({ ...prev, title: e.target.value }))}
           placeholder="Enter post title..."
           name="title"
         />
-        {/* setPost(prev => ({...prev, title: e.target.value})); */}
         <MyInput
           value={post.body}
-          onChange={(e) => setPost({ ...post, body: e.target.value })}
+          /* onChange={(e) => setPost({ ...post, body: e.target.value })} */
+          onChange={(e) => setPost((prev) => ({ ...prev, body: e.target.value }))}
           placeholder="Enter post context..."
           name="body"
         />

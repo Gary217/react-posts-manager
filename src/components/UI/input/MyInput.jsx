@@ -1,4 +1,3 @@
-import React from 'react';
 import cl from './MyInput.module.css';
 
 export const MyInput = (props) => {
