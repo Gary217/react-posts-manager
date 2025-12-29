@@ -1,10 +1,10 @@
-import axios from 'axios';
 import { PostForm } from './components/PostForm';
 import { PostList } from './components/PostList';
 import { useEffect, useMemo, useState } from 'react';
 import { MyButton } from './components/UI/button/MyButton';
 import { MyModal } from './components/UI/modal/MyModal';
 import { PostFilter } from './components/PostFilter';
+import PostService from './API/PostService';
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -13,8 +13,8 @@ function App() {
   const [searchQuery, setSearchQuery] = useState('');
 
   async function fetchPosts() {
-    const response = await axios.get('https://jsonplaceholder.typicode.com/posts?_limit=10');
-    const defaultSorted = [...response.data].sort((a, b) =>
+    const responseData = await PostService.getAll();
+    const defaultSorted = [...responseData].sort((a, b) =>
       a[selectedSort].localeCompare(b[selectedSort])
     );
     setPosts(defaultSorted);
