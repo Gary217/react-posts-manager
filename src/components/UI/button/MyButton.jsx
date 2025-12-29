@@ -1,4 +1,4 @@
-import cl from './MyBytton.module.css';
+import cl from './MyButton.module.css';
 
 export const MyButton = ({ children, ...props }) => {
   return (
