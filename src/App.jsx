@@ -6,6 +6,7 @@ import { MyModal } from './components/UI/modal/MyModal';
 import { PostFilter } from './components/PostFilter';
 import PostService from './API/PostService';
 import { MyLoader } from './components/UI/loader/MyLoader';
+import cl from './components/PostFilter.module.css';
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -51,7 +52,9 @@ function App() {
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
       >
-        <MyButton onClick={() => setModal(true)}>Create post</MyButton>
+        <div className={cl.PostFilter__content}>
+          <MyButton onClick={() => setModal(true)}>Create post</MyButton>
+        </div>
       </PostFilter>
       <MyModal visible={modal} setVisible={setModal}>
         <PostForm posts={posts} setPosts={setPosts} setVisible={setModal} />
