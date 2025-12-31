@@ -1,6 +1,6 @@
 import { PostItem } from './PostItem';
 
-export const PostList = ({ posts, setPosts }) => {
+export const PostList = ({ posts, setPosts, pageNumber, pageLimit }) => {
   return (
     <section>
       <h1>Posts about React.js</h1>
@@ -11,7 +11,7 @@ export const PostList = ({ posts, setPosts }) => {
           <PostItem
             post={post}
             key={post.id}
-            number={index + 1}
+            number={(pageNumber - 1) * pageLimit + index + 1}
             posts={posts}
             setPosts={setPosts}
           />

@@ -7,6 +7,8 @@ import { PostFilter } from './components/PostFilter';
 import PostService from './API/PostService';
 import { MyLoader } from './components/UI/loader/MyLoader';
 import cl from './components/PostFilter.module.css';
+import { getPagesArr, getPagesCount } from './utils/pages';
+import { Pagination } from './components/Pagination';
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -14,20 +16,25 @@ function App() {
   const [selectedSort, setSelectedSort] = useState('title');
   const [searchQuery, setSearchQuery] = useState('');
   const [isPostLoading, setIsPostLoading] = useState(false);
+  const [totalPagesCount, setTotalPagesCount] = useState(0);
+  const [pageLimit, setPageLimit] = useState(10);
+  const [pageNumber, setPageNumber] = useState(1);
 
   async function fetchPosts() {
     setIsPostLoading(true);
-    const responseData = await PostService.getAll();
-    const defaultSorted = [...responseData].sort((a, b) =>
+    const response = await PostService.getAll(pageLimit, pageNumber);
+    const defaultSorted = [...response.data].sort((a, b) =>
       a[selectedSort].localeCompare(b[selectedSort])
     );
     setPosts(defaultSorted);
     setIsPostLoading(false);
+    const totalPostsCount = response.headers['x-total-count'];
+    setTotalPagesCount(getPagesCount(totalPostsCount, pageLimit));
   }
 
   useEffect(() => {
     fetchPosts();
-  }, []);
+  }, [pageNumber]);
 
   const sortPosts = (sortKey) => {
     setSelectedSort(sortKey);
@@ -43,6 +50,14 @@ function App() {
       post.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
   }, [searchQuery, sortedPosts]);
+
+  const pagesArr = useMemo(() => {
+    return getPagesArr(totalPagesCount);
+  }, [totalPagesCount]);
+
+  const changePage = (page) => {
+    setPageNumber(page);
+  };
 
   return (
     <>
@@ -62,8 +77,14 @@ function App() {
       {isPostLoading ? (
         <MyLoader />
       ) : (
-        <PostList posts={searchedAndSortedPosts} setPosts={setPosts} />
+        <PostList
+          posts={searchedAndSortedPosts}
+          setPosts={setPosts}
+          pageNumber={pageNumber}
+          pageLimit={pageLimit}
+        />
       )}
+      <Pagination pagesArr={pagesArr} pageNumber={pageNumber} changePage={changePage} />
     </>
   );
 }

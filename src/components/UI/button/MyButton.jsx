@@ -1,8 +1,8 @@
 import cl from './MyButton.module.css';
 
-export const MyButton = ({ children, ...props }) => {
+export const MyButton = ({ children, className, ...props }) => {
   return (
-    <button {...props} className={cl.MyButton}>
+    <button {...props} className={`${cl.MyButton} ${className}`}>
       {children}
     </button>
   );

@@ -2,6 +2,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  border-bottom: none;
 }
 
 .PostFilter__content {

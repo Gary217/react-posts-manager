@@ -9,6 +9,7 @@
   cursor: pointer;
   transition: border-color 0.25s;
   align-self: center;
+  user-select: none;
 }
 .MyButton:hover {
   border-color: #646cff;

@@ -1,0 +1,12 @@
+.Pagination {
+  flex-direction: row;
+  gap: 7px;
+  justify-content: center;
+  flex-wrap: wrap;
+  border: none;
+  margin-top: 5px;
+}
+
+.pageActive {
+  outline: 4px auto -webkit-focus-ring-color;
+}
