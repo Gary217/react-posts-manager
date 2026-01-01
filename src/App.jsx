@@ -25,11 +25,9 @@ function App() {
   async function fetchPosts() {
     setIsPostLoading(true);
     const response = await PostService.getAll(pageLimit, pageNumber);
-    const defaultSorted = [...response.data].sort((a, b) =>
-      a[selectedSort].localeCompare(b[selectedSort])
-    );
-    setPosts(defaultSorted);
+    setPosts(response.data);
     setIsPostLoading(false);
+
     const totalPostsCount = response.headers['x-total-count'];
     setTotalPagesCount(getPagesCount(totalPostsCount, pageLimit));
   }
