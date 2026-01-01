@@ -6,6 +6,9 @@
 }
 
 .PostFilter__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   max-width: 198px;
   width: 100%;
 }
