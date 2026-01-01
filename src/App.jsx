@@ -7,8 +7,10 @@ import { PostFilter } from './components/PostFilter';
 import PostService from './API/PostService';
 import { MyLoader } from './components/UI/loader/MyLoader';
 import cl from './components/PostFilter.module.css';
-import { getPagesArr, getPagesCount } from './utils/pages';
+import { getPagesCount } from './utils/pages';
 import { Pagination } from './components/Pagination';
+import { useProcessedPosts } from './hooks/useProcessedPosts';
+import { usePagination } from './hooks/usePagination';
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -41,19 +43,8 @@ function App() {
     /* setPosts([...posts].sort((a, b) => a[sortKey].localeCompare(b[sortKey]))); */
   };
 
-  const sortedPosts = useMemo(() => {
-    return [...posts].sort((a, b) => a[selectedSort].localeCompare(b[selectedSort]));
-  }, [selectedSort, posts]);
-
-  const searchedAndSortedPosts = useMemo(() => {
-    return sortedPosts.filter((post) =>
-      post.title.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-  }, [searchQuery, sortedPosts]);
-
-  const pagesArr = useMemo(() => {
-    return getPagesArr(totalPagesCount);
-  }, [totalPagesCount]);
+  const searchedAndSortedPosts = useProcessedPosts(posts, selectedSort, searchQuery);
+  const pagesArr = usePagination(totalPagesCount);
 
   const changePage = (page) => {
     setPageNumber(page);
