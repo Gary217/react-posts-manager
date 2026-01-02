@@ -11,26 +11,24 @@ import { getPagesCount } from './utils/pages';
 import { Pagination } from './components/Pagination';
 import { useProcessedPosts } from './hooks/useProcessedPosts';
 import { usePagination } from './hooks/usePagination';
+import { useFetching } from './hooks/useFetching';
 
 function App() {
   const [posts, setPosts] = useState([]);
   const [modal, setModal] = useState(false);
   const [selectedSort, setSelectedSort] = useState('title');
   const [searchQuery, setSearchQuery] = useState('');
-  const [isPostLoading, setIsPostLoading] = useState(false);
   const [totalPagesCount, setTotalPagesCount] = useState(0);
   const [pageLimit, setPageLimit] = useState(10);
   const [pageNumber, setPageNumber] = useState(1);
 
-  async function fetchPosts() {
-    setIsPostLoading(true);
+  const [fetchPosts, isPostLoading, postError] = useFetching(async () => {
     const response = await PostService.getAll(pageLimit, pageNumber);
     setPosts(response.data);
-    setIsPostLoading(false);
 
     const totalPostsCount = response.headers['x-total-count'];
     setTotalPagesCount(getPagesCount(totalPostsCount, pageLimit));
-  }
+  });
 
   useEffect(() => {
     fetchPosts();
@@ -71,7 +69,10 @@ function App() {
           setPosts={setPosts}
           pageNumber={pageNumber}
           pageLimit={pageLimit}
-        />
+          postError={postError}
+        >
+          Posts about React.js
+        </PostList>
       )}
       <Pagination pagesArr={pagesArr} pageNumber={pageNumber} changePage={changePage} />
     </>
