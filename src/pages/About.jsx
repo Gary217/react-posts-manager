@@ -1,3 +1,8 @@
 export const About = () => {
-  return <h1>About PostManager</h1>;
+  return (
+    <section>
+      <h1>About PostManager</h1>
+      <p>Some text...</p>
+    </section>
+  );
 };
