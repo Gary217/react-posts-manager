@@ -6,8 +6,8 @@ export const PostList = ({ children, posts, setPosts, pageNumber, pageLimit, pos
       <section>
         <h2 style={{ color: 'red' }}>
           Something went wrong while loading posts. Please try again later.
-          <span style={{ display: 'block' }}>{postError}</span>
         </h2>
+        <p style={{ color: 'red' }}>{postError}</p>
       </section>
     );
   }
@@ -15,7 +15,7 @@ export const PostList = ({ children, posts, setPosts, pageNumber, pageLimit, pos
   if (posts.length === 0) {
     return (
       <section>
-        <h2 style={{ color: 'red' }}>No posts found!</h2>
+        <h1 style={{ color: 'red' }}>No posts found!</h1>
       </section>
     );
   }
