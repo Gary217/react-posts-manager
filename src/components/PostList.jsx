@@ -1,13 +1,30 @@
 import { PostItem } from './PostItem';
+import { MyButton } from './UI/button/MyButton';
+import cl from './UI/button/MyButton.module.css';
 
-export const PostList = ({ children, posts, setPosts, pageNumber, pageLimit, postError }) => {
+export const PostList = ({
+  children,
+  posts,
+  setPosts,
+  pageNumber,
+  pageLimit,
+  postError,
+  fetchPosts,
+}) => {
   if (postError) {
     return (
-      <section>
-        <h2 style={{ color: 'red' }}>
+      <section className={cl.MyButton__err}>
+        <h1 style={{ color: 'red', fontSize: '1.5em' }}>
           Something went wrong while loading posts. Please try again later.
-        </h2>
-        <p style={{ color: 'red' }}>{postError}</p>
+        </h1>
+        {/* <p style={{ color: 'red' }}>{postError}</p> */}
+        <MyButton
+          onClick={() => {
+            fetchPosts();
+          }}
+        >
+          Tap to retry
+        </MyButton>
       </section>
     );
   }
@@ -15,7 +32,7 @@ export const PostList = ({ children, posts, setPosts, pageNumber, pageLimit, pos
   if (posts.length === 0) {
     return (
       <section>
-        <h1 style={{ color: 'red' }}>No posts found!</h1>
+        <h1 style={{ color: 'red', fontSize: '1.5em' }}>No posts found!</h1>
       </section>
     );
   }

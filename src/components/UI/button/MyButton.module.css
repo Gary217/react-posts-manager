@@ -11,6 +11,13 @@
   align-self: center;
   user-select: none;
 }
+
+.MyButton__err {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .MyButton:hover {
   border-color: #646cff;
 }

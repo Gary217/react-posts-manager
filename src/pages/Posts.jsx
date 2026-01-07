@@ -59,7 +59,7 @@ export const Posts = () => {
         </div>
       </PostFilter>
       <MyModal visible={modal} setVisible={setModal}>
-        <PostForm posts={posts} setPosts={setPosts} setVisible={setModal} />
+        <PostForm /* posts={posts} */ setPosts={setPosts} setVisible={setModal} />
       </MyModal>
       {isPostLoading ? (
         <MyLoader />
@@ -70,6 +70,7 @@ export const Posts = () => {
           pageNumber={pageNumber}
           pageLimit={pageLimit}
           postError={postError}
+          fetchPosts={fetchPosts}
         >
           Posts about React.js
         </PostList>
