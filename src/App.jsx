@@ -6,11 +6,13 @@ import { useEffect, useState } from 'react';
 
 export default function App() {
   const [isAuth, setIsAuth] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (localStorage.getItem('auth')) {
       setIsAuth(true);
     }
+    setIsLoading(false);
   }, []);
 
   return (
@@ -18,6 +20,7 @@ export default function App() {
       value={{
         isAuth,
         setIsAuth, //setIsAuth: setIsAuth
+        isLoading,
       }}
     >
       <BrowserRouter>
