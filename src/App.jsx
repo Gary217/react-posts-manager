@@ -5,12 +5,7 @@ import { AppRouter } from './components/AppRouter';
 export default function App() {
   return (
     <BrowserRouter>
-      <Navbar
-        links={[
-          { path: 'about', linkName: 'About' },
-          { path: 'posts', linkName: 'Posts' },
-        ]}
-      />
+      <Navbar />
       <AppRouter />
     </BrowserRouter>
   );
