@@ -7,6 +7,10 @@ import { MyButton } from './UI/button/MyButton';
 
 export const Navbar = () => {
   const { isAuth, setIsAuth } = useContext(AuthContext);
+  const logout = () => {
+    setIsAuth(false);
+    localStorage.removeItem('auth');
+  };
 
   return (
     <section className={cl.Navbar}>
@@ -20,7 +24,7 @@ export const Navbar = () => {
               </Link>
             );
           })}
-        <MyButton onClick={() => setIsAuth(false)}>Sign Out</MyButton>
+        <MyButton onClick={logout}>Sign Out</MyButton>
       </nav>
     </section>
   );
