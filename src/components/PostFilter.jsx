@@ -14,7 +14,9 @@ export const PostFilter = ({ children, selectedSort, sortPosts, searchQuery, set
       {children}
       <div className={cl.PostFilter__content}>
         <MyInput
+          type="search"
           name="search"
+          autoComplete="on"
           placeholder="Search..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
