@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
-import PostService from '../API/PostService';
-import { useFetching } from '../hooks/useFetching';
-import { MyLoader } from '../components/UI/loader/MyLoader';
-import { MyButton } from '../components/UI/button/MyButton';
-import cl from '../components/UI/button/MyButton.module.css';
+import PostService from '../../API/PostService';
+import { useFetching } from '../../hooks/useFetching';
+import { MyLoader } from '../../components/UI/loader/MyLoader';
+import { MyButton } from '../../components/UI/button/MyButton';
+import cl from '../../components/UI/button/MyButton.module.css';
+import { PostNotFound } from './PostNotFound';
+import { PostFetchError } from './PostFetchError';
 
 export const PostIdPage = () => {
   const params = useParams();
@@ -39,33 +41,11 @@ export const PostIdPage = () => {
   }
 
   if (error === 'NOT_FOUND') {
-    return (
-      <section>
-        <p style={{ fontSize: '2em' }}>Viewing Post #{params.id}</p>
-        <p style={{ color: 'red', fontSize: '1.5em' }}>Post does not exist.</p>
-      </section>
-    );
+    return <PostNotFound params={params} />;
   }
 
   if (error === 'FETCH_ERROR') {
-    return (
-      <section>
-        <p style={{ fontSize: '2em' }}>Viewing Post #{params.id}</p>
-        <div className={cl.MyButton__err}>
-          <p style={{ color: 'red', fontSize: '1.5em' }}>
-            Couldn’t load the post. Please try again later.
-          </p>
-          {/* <p style={{ color: 'red' }}>{error.message}</p> */}
-          <MyButton
-            onClick={() => {
-              loadPostData();
-            }}
-          >
-            Tap to retry
-          </MyButton>
-        </div>
-      </section>
-    );
+    return <PostFetchError params={params} loadPostData={loadPostData} />;
   }
 
   return (

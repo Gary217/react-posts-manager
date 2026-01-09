@@ -1,7 +1,7 @@
 import { About } from '../pages/About';
 import { Error } from '../pages/Error';
 import { Login } from '../pages/Login';
-import { PostIdPage } from '../pages/PostIdPage';
+import { PostIdPage } from '../pages/PostIdPage/PostIdPage';
 import { Posts } from '../pages/Posts';
 
 export const privateRoutes = [
