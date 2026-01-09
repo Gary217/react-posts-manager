@@ -1,16 +1,41 @@
-# React + Vite
+# PostsManager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**PostsManager** is a React SPA for managing posts. The project demonstrates skills with the modern React stack: hooks, routing, state management, server interaction, and creating reusable UI components and a component library.
 
-Currently, two official plugins are available:
+## Key Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Post Display**: Fetch posts from a server (JSONPlaceholder) using Axios and display them in a list.
+- **Search and Sorting**: Filter posts by title and sort them by different criteria.
+- **Create and Delete Posts**: Use modals to add new posts and delete existing ones.
+- **Post Details**: Open a post page by ID and load its comments.
+- **Pagination**: Split posts into pages for easier navigation.
+- **Authorization**: Basic client-side authorization using `useContext` for global user state.
+- **Routing**: SPA using React Router with separate pages and dynamic routes (`About`, `Posts`, `Error`, `Login`, `PostIdPage`).
+- **Error Handling**: Display messages for 404 errors or server fetch errors.
+- **Loader and Loading Indicators**: Visual feedback when data is being loaded.
+- **Reusable UI Components**: Modals, buttons, inputs, and Loader components.
+- **Performance Optimization**: Use `useMemo` for memoization and caching.
 
-## React Compiler
+## Technologies Used
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React (functional and class components)
+- React Hooks (`useState`, `useEffect`, `useContext`, custom hooks)
+- React Router (`BrowserRouter`, `Routes`, `Route`, `Navigate`, `useParams`, `useNavigate`)
+- Axios for API requests
+- CSS Modules for styling
+- SPA approach without page reloads
 
-## Expanding the ESLint configuration
+## Development Tools
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Vite** — fast React build tool and development server
+- **Prettier** — code formatter for consistent code style
+
+## Project Goal
+
+The project was created to practice React and demonstrate full SPA development skills, including:
+
+- State management and event handling
+- Building reusable UI components
+- Asynchronous API requests
+- Routing and error handling
+- Performance optimization and UX improvements
