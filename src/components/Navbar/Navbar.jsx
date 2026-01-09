@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import cl from './Navbar.module.css';
 import { privateRoutes } from '../../router/routes';
 import { useContext } from 'react';
-import { AuthContext } from '../../context';
+import { AuthContext } from '../../context/AuthContext';
 import { MyButton } from '../UI/button/MyButton';
 
 export const Navbar = () => {

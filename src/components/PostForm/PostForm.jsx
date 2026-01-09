@@ -32,7 +32,7 @@ export const PostForm = ({ setVisible, /* posts, */ setPosts }) => {
           value={post.body}
           /* onChange={(e) => setPost({ ...post, body: e.target.value })} */
           onChange={(e) => setPost((prev) => ({ ...prev, body: e.target.value }))}
-          placeholder="Enter post context..."
+          placeholder="Enter post content..."
           name="body"
         />
       </form>

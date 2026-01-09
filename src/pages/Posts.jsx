@@ -1,6 +1,6 @@
 import { PostForm } from '../components/PostForm/PostForm';
 import { PostList } from '../components/PostList/PostList';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { MyButton } from '../components/UI/button/MyButton';
 import { MyModal } from '../components/UI/modal/MyModal';
 import { PostFilter } from '../components/PostFilter/PostFilter';
@@ -12,9 +12,10 @@ import { Pagination } from '../components/Pagination/Pagination';
 import { useProcessedPosts } from '../hooks/useProcessedPosts';
 import { usePagination } from '../hooks/usePagination';
 import { useFetching } from '../hooks/useFetching';
+import { PostsContext } from '../context/PostsContext';
 
 export const Posts = () => {
-  const [posts, setPosts] = useState([]);
+  const { posts, setPosts } = useContext(PostsContext);
   const [modal, setModal] = useState(false);
   const [selectedSort, setSelectedSort] = useState('title');
   const [searchQuery, setSearchQuery] = useState('');

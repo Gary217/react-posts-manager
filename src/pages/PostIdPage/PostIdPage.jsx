@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import PostService from '../../API/PostService';
 import { useFetching } from '../../hooks/useFetching';
@@ -7,10 +7,12 @@ import { MyButton } from '../../components/UI/button/MyButton';
 import cl from '../../components/UI/button/MyButton.module.css';
 import { PostNotFound } from './PostNotFound';
 import { PostFetchError } from './PostFetchError';
+import { PostsContext } from '../../context/PostsContext';
 
 export const PostIdPage = () => {
   const params = useParams();
-  const [post, setPost] = useState({});
+  const { posts } = useContext(PostsContext);
+  const [post, setPost] = useState([]);
   const [comments, setComments] = useState([]);
 
   const isValid = Number.isInteger(Number(params.id));
@@ -31,10 +33,17 @@ export const PostIdPage = () => {
   };
 
   useEffect(() => {
-    if (isValid) {
-      loadPostData();
+    if (!isValid) return;
+    const localPost = posts.find((p) => p.id === Number(params.id));
+
+    if (localPost) {
+      setPost(localPost);
+    } else {
+      fetching(params.id);
     }
-  }, [params.id]);
+
+    fetchComments(params.id);
+  }, [params.id, posts]);
 
   if (!isValid) {
     return <Navigate to={'/error'} />;
@@ -52,13 +61,15 @@ export const PostIdPage = () => {
     <section>
       <p style={{ fontSize: '2em' }}>Viewing Post #{params.id}</p>
 
-      {isPostLoading ? (
+      {isPostLoading && !post ? (
         <MyLoader />
-      ) : (
+      ) : post ? (
         <div>
           <h1>{post.title}</h1>
           <p style={{ textAlign: 'left' }}>{post.body}</p>
         </div>
+      ) : (
+        []
       )}
 
       <h2 style={{ textAlign: 'left' }}>Comments:</h2>
