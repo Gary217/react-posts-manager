@@ -6,10 +6,15 @@ export const useFetching = (callback) => {
 
   const fetching = async (...args) => {
     try {
+      setError('');
       setIsPostLoading(true);
       await callback(...args);
     } catch (e) {
-      setError(e.message);
+      if (e.response?.status === 404) {
+        setError('NOT_FOUND');
+      } else {
+        setError('FETCH_ERROR');
+      }
     } finally {
       setIsPostLoading(false);
     }

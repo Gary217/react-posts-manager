@@ -38,16 +38,24 @@ export const PostIdPage = () => {
     return <Navigate to={'/error'} />;
   }
 
-  return (
-    <section>
-      <p style={{ fontSize: '2em' }}>Viewing Post #{params.id}</p>
+  if (error === 'NOT_FOUND') {
+    return (
+      <section>
+        <p style={{ fontSize: '2em' }}>Viewing Post #{params.id}</p>
+        <p style={{ color: 'red', fontSize: '1.5em' }}>Post does not exist.</p>
+      </section>
+    );
+  }
 
-      {error && (
+  if (error === 'FETCH_ERROR') {
+    return (
+      <section>
+        <p style={{ fontSize: '2em' }}>Viewing Post #{params.id}</p>
         <div className={cl.MyButton__err}>
           <p style={{ color: 'red', fontSize: '1.5em' }}>
             Couldn’t load the post. Please try again later.
           </p>
-          {/* <p style={{ color: 'red' }}>{error}</p> */}
+          {/* <p style={{ color: 'red' }}>{error.message}</p> */}
           <MyButton
             onClick={() => {
               loadPostData();
@@ -56,7 +64,13 @@ export const PostIdPage = () => {
             Tap to retry
           </MyButton>
         </div>
-      )}
+      </section>
+    );
+  }
+
+  return (
+    <section>
+      <p style={{ fontSize: '2em' }}>Viewing Post #{params.id}</p>
 
       {isPostLoading ? (
         <MyLoader />
@@ -69,25 +83,18 @@ export const PostIdPage = () => {
 
       <h2 style={{ textAlign: 'left' }}>Comments:</h2>
 
-      {comError && (
+      {isComLoading && <MyLoader />}
+
+      {comError === 'FETCH_ERROR' && (
         <div className={cl.MyButton__err}>
           <p style={{ color: 'red', fontSize: '1.5em' }}>
             Couldn’t load comments. Please try again later.
           </p>
-          {/* <p style={{ color: 'red' }}>{comError}</p> */}
-          <MyButton
-            onClick={() => {
-              loadPostData();
-            }}
-          >
-            Try again
-          </MyButton>
+          <MyButton onClick={fetchComments.bind(null, params.id)}>Try again</MyButton>
         </div>
       )}
 
-      {isComLoading ? (
-        <MyLoader />
-      ) : (
+      {!isComLoading && !comError && (
         <div style={{ textAlign: 'left', display: 'grid', gap: 15 }}>
           {comments.map((comm) => (
             <div key={comm.id}>
