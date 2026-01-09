@@ -1,5 +1,5 @@
 import cl from './PostFilter.module.css';
-import { MyInput } from './UI/input/MyInput';
+import { MyInput } from '../UI/input/MyInput';
 
 export const PostFilter = ({ children, selectedSort, sortPosts, searchQuery, setSearchQuery }) => {
   return (

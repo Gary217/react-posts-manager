@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import cl from './PostForm.module.css';
-import { MyInput } from './UI/input/MyInput';
-import { MyButton } from './UI/button/MyButton';
+import { MyInput } from '../UI/input/MyInput';
+import { MyButton } from '../UI/button/MyButton';
 
 export const PostForm = ({ setVisible, /* posts, */ setPosts }) => {
   const [post, setPost] = useState({ title: '', body: '' });

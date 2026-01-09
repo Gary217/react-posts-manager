@@ -1,6 +1,6 @@
-import { PostItem } from './PostItem';
-import { MyButton } from './UI/button/MyButton';
-import cl from './UI/button/MyButton.module.css';
+import { PostItem } from '../PostItem/PostItem';
+import { MyButton } from '../UI/button/MyButton';
+import cl from '../UI/button/MyButton.module.css';
 
 export const PostList = ({
   children,

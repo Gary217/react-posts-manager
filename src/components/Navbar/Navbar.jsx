@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import cl from './Navbar.module.css';
-import { privateRoutes } from '../router/routes';
+import { privateRoutes } from '../../router/routes';
 import { useContext } from 'react';
-import { AuthContext } from '../context';
-import { MyButton } from './UI/button/MyButton';
+import { AuthContext } from '../../context';
+import { MyButton } from '../UI/button/MyButton';
 
 export const Navbar = () => {
   const { isAuth, setIsAuth } = useContext(AuthContext);

@@ -1,5 +1,5 @@
 import { BrowserRouter } from 'react-router-dom';
-import { Navbar } from './components/Navbar';
+import { Navbar } from './components/Navbar/Navbar';
 import { AppRouter } from './components/AppRouter';
 import { AuthContext } from './context';
 import { useEffect, useState } from 'react';

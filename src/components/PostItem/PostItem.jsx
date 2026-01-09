@@ -1,4 +1,4 @@
-import { MyButton } from './UI/button/MyButton';
+import { MyButton } from '../UI/button/MyButton';
 import cl from './PostItem.module.css';
 import { useNavigate } from 'react-router-dom';
 

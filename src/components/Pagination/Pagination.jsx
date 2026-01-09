@@ -1,4 +1,4 @@
-import { MyButton } from './UI/button/MyButton';
+import { MyButton } from '../UI/button/MyButton';
 import cl from './Pagination.module.css';
 
 export const Pagination = ({ pagesArr, pageNumber, changePage }) => {
