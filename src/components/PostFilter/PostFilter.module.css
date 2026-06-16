@@ -1,0 +1,14 @@
+.PostFilter {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: none;
+}
+
+.PostFilter__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 198px;
+  width: 100%;
+}

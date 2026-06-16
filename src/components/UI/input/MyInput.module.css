@@ -1,0 +1,9 @@
+.MyInput {
+  padding: 10px;
+  border: 1px solid darkseagreen;
+  font-size: 15px;
+}
+
+.MyInput::placeholder {
+  user-select: none;
+}
