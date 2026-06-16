@@ -1,6 +1,10 @@
-# PostsManager
+# Posts Manager
 
-**PostsManager** is a React SPA for managing posts. The project demonstrates skills with the modern React stack: hooks, routing, state management, server interaction, and creating reusable UI components and a component library.
+**Posts Manager** is a React SPA developed for seamless CRUD operations, content sorting, and secure routing. The project demonstrates skills with the modern React stack: hooks, routing, state management, server interaction, and creating reusable UI components and a component library.
+
+## Live Demo
+
+- **Deployment:** [https://gary217.github.io/react-posts-manager/](https://gary217.github.io/react-posts-manager/)
 
 ## Key Features
 
@@ -30,12 +34,33 @@
 - **Vite** — fast React build tool and development server
 - **Prettier** — code formatter for consistent code style
 
-## Project Goal
+## Local Development
 
-The project was created to practice React and demonstrate full SPA development skills, including:
-
-- State management and event handling
-- Building reusable UI components
-- Asynchronous API requests
-- Routing and error handling
-- Performance optimization and UX improvements
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Gary217/react-posts-manager.git
+   ```
+2. Navigate to the project folder:
+   ```bash
+   cd .\react-posts-manager\
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Start the Vite development server:
+   ```bash
+   npm run dev
+   ```
+5. Build the project for production:
+   ```bash
+   npm run build
+   ```
+6. Preview the production build locally:
+   ```bash
+   npm run preview
+   ```
+7. Deploy directly to GitHub Pages:
+   ```bash
+   npm run deploy
+   ```

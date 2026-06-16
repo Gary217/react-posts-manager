@@ -26,7 +26,7 @@ export default function App() {
           isLoading,
         }}
       >
-        <BrowserRouter>
+        <BrowserRouter basename="/react-posts-manager">
           <Navbar />
           <AppRouter />
         </BrowserRouter>
